@@ -1,0 +1,150 @@
+/* 响应式样式 */
+
+/* 大屏幕设备 (大于等于1200px) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+/* 中等屏幕设备 (大于等于992px) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+}
+
+/* 平板设备 (大于等于768px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .hero-section {
+        padding: 80px 0;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .hero-buttons .btn {
+        padding: 0.6rem 1.2rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .service-icon {
+        font-size: 2rem;
+    }
+}
+
+/* 手机设备 (小于768px) */
+@media (max-width: 767.98px) {
+    body {
+        padding-top: 66px;
+    }
+    
+    .navbar {
+        padding: 0.3rem 1rem;
+    }
+    
+    .navbar-brand img {
+        height: 30px;
+    }
+    
+    .hero-section {
+        padding: 60px 0;
+        text-align: center;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .hero-buttons .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .hero-image {
+        margin-top: 2rem;
+    }
+    
+    .section-title {
+        font-size: 1.6rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1rem;
+    }
+    
+    .service-icon {
+        font-size: 1.8rem;
+    }
+    
+    .service-card .card-title,
+    .service-detail-card .card-title,
+    .case-card .card-title,
+    .blog-card .card-title {
+        font-size: 1.2rem;
+    }
+    
+    .contact-form-container {
+        padding: 1.5rem;
+    }
+    
+    .floating-button {
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .floating-button .btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+}
+
+/* 超小屏幕设备 (小于576px) */
+@media (max-width: 575.98px) {
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-buttons .btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    
+    .hero-buttons .btn:last-child {
+        margin-bottom: 0;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .partner-logo {
+        height: 60px;
+    }
+    
+    .qrcode {
+        max-width: 120px;
+    }
+    
+    .qrcode-small {
+        max-width: 80px;
+    }
+}

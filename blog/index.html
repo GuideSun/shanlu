@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内容中心 - 山麓教育</title>
+    <meta name="description" content="汇集AI应用洞察、案例解析、培训动态、媒体报道的专业内容平台">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <img src="../assets/images/logo.png" alt="山麓教育" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../services.html">服务</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../cases.html">案例</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">关于</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">内容中心</a>
+                    </li>
+                </ul>
+                <a href="javascript:void(0)" class="btn btn-primary ms-3 consultation-btn">预约企业诊断</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面标题横幅 -->
+    <section class="page-header py-5" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-5 fw-bold mb-3">内容中心 / Insights</h1>
+                    <p class="lead mb-4 opacity-90">汇集AI应用洞察、案例解析、培训动态、媒体报道的专业内容平台</p>
+                    <div class="stats-row d-flex flex-wrap gap-4">
+                        <div class="stat-item">
+                            <div class="h4 mb-0" id="totalArticles">0</div>
+                            <small class="opacity-75">篇文章</small>
+                        </div>
+                        <div class="stat-item">
+                            <div class="h4 mb-0" id="mediaReports">0</div>
+                            <small class="opacity-75">媒体报道</small>
+                        </div>
+                        <div class="stat-item">
+                            <div class="h4 mb-0" id="trainingReports">0</div>
+                            <small class="opacity-75">培训报道</small>
+                        </div>
+                        <div class="stat-item">
+                            <div class="h4 mb-0" id="aiNews">0</div>
+                            <small class="opacity-75">AI资讯</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <div class="floating-icon">
+                        <i class="bi bi-collection fs-1 opacity-75"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 内容分类导航 -->
+    <section class="content-nav py-4 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <ul class="nav nav-pills justify-content-center" id="contentTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="all-tab" data-category="all" type="button">全部内容</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="training-tab" data-category="培训与报道" type="button">培训与报道</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="media-tab" data-category="媒体新闻" type="button">媒体新闻</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="ai-tab" data-category="AI资讯" type="button">AI资讯</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 主要内容区域 -->
+    <section class="content-section py-5">
+        <div class="container">
+            <!-- 置顶推荐区域 -->
+            <div id="pinnedSection" class="pinned-section mb-5" style="display: none;">
+                <div class="d-flex align-items-center mb-4">
+                    <i class="bi bi-pin-angle-fill text-primary me-2 fs-5"></i>
+                    <h3 class="h5 mb-0">置顶推荐</h3>
+                </div>
+                <div class="row" id="pinnedArticles">
+                    <!-- 置顶文章将在这里动态生成 -->
+                </div>
+            </div>
+
+            <!-- 特色文章区域 -->
+            <div id="featuredSection" class="featured-section mb-5" style="display: none;">
+                <div class="d-flex align-items-center mb-4">
+                    <i class="bi bi-star-fill text-warning me-2 fs-5"></i>
+                    <h3 class="h5 mb-0">精选内容</h3>
+                </div>
+                <div class="row" id="featuredArticles">
+                    <!-- 特色文章将在这里动态生成 -->
+                </div>
+            </div>
+
+            <!-- 全部文章区域 -->
+            <div class="all-articles-section">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <div class="d-flex align-items-center">
+                        <i class="bi bi-grid-3x3-gap-fill text-secondary me-2 fs-5"></i>
+                        <h3 class="h5 mb-0" id="sectionTitle">全部内容</h3>
+                        <span class="badge bg-secondary ms-2" id="articleCount">0</span>
+                    </div>
+                    <div class="sort-controls">
+                        <select class="form-select form-select-sm" id="sortSelect" style="width: auto;">
+                            <option value="date-desc">按时间排序（最新）</option>
+                            <option value="date-asc">按时间排序（最早）</option>
+                            <option value="source">按来源排序</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row" id="allArticles">
+                    <!-- 所有文章将在这里动态生成 -->
+                </div>
+            </div>
+
+            <!-- 加载更多按钮 -->
+            <div class="text-center mt-5" id="loadMoreSection" style="display: none;">
+                <button class="btn btn-outline-primary" id="loadMoreBtn">
+                    <i class="bi bi-arrow-down-circle me-2"></i>加载更多
+                </button>
+            </div>
+
+            <!-- 无内容提示 -->
+            <div class="text-center py-5" id="noContentSection" style="display: none;">
+                <i class="bi bi-inbox fs-1 text-muted mb-3"></i>
+                <h5 class="text-muted">暂无相关内容</h5>
+                <p class="text-muted">该分类下暂时没有文章，请选择其他分类查看</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-3">山麓教育咨询</h5>
+                    <p class="text-light">专注于AI技术培训与企业数字化转型咨询，为企业提供专业的人工智能解决方案和培训服务。</p>
+                    <div class="social-links mt-4">
+                        <a href="#" class="text-white me-3"><i class="bi bi-wechat fs-5"></i></a>
+                        <a href="#" class="text-white me-3"><i class="bi bi-qq fs-5"></i></a>
+                        <a href="#" class="text-white me-3"><i class="bi bi-envelope fs-5"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h6 class="mb-3">快速链接</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="../index.html" class="text-light text-decoration-none">首页</a></li>
+                        <li class="mb-2"><a href="../services.html" class="text-light text-decoration-none">服务</a></li>
+                        <li class="mb-2"><a href="../cases.html" class="text-light text-decoration-none">案例</a></li>
+                        <li class="mb-2"><a href="../about.html" class="text-light text-decoration-none">关于</a></li>
+                        <li class="mb-2"><a href="index.html" class="text-light text-decoration-none">内容中心</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h6 class="mb-3">服务项目</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">AI技术培训</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">企业AI咨询</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">智能体开发</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">数字化转型</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h6 class="mb-3">联系我们</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-geo-alt me-2"></i>广东省珠海市</li>
+                        <li class="mb-2"><i class="bi bi-telephone me-2"></i>138-2313-3013</li>
+                        <li class="mb-2"><i class="bi bi-envelope me-2"></i>contact@shanlu-edu.com</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 山麓教育咨询. 保留所有权利.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-light text-decoration-none me-3">隐私政策</a>
+                    <a href="#" class="text-light text-decoration-none">服务条款</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 在线咨询弹框 -->
+    <div class="modal fade" id="consultationModal" tabindex="-1" aria-labelledby="consultationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="consultationModalLabel">立刻升级制造力</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="关闭"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-3">您可立即拨打客服电话或留下需求或者添加微信联系。</p>
+                    <div class="d-flex flex-wrap gap-2 mb-3">
+                        <a href="tel:13823133013" class="btn btn-primary flex-grow-1">立即咨询</a>
+                        <a href="https://nj34e5winy.feishu.cn/share/base/form/shrcni7H505RmimGyLX40S27D3G" target="_blank" rel="noopener" class="btn btn-outline-primary flex-grow-1">提交需求</a>
+                    </div>
+                    <div class="text-center">
+                        <img src="assets/images/wechat-qr.png" alt="微信二维码" class="img-fluid" style="max-width:160px;">
+                        <div class="small text-muted mt-2">添加微信咨询</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        // 文章数据 - 直接嵌入所有数据
+        let articlesData = [
+            {
+                "id": 1,
+                "title": "【百年初心・故事里的劳动观 40】AI 工具为劳动者点亮新技能之灯",
+                "summary": "深圳 AI 应用培训师孙长山深耕 AI 应用领域，通过总结优化 AI 工具实操方法，为企业提供定制化 AI 转型方案，助力一线劳动者快速掌握 AI 技能，推动多家企业成功实现数字化升级，大幅提升办公效率。",
+                "source": "南方工报",
+                "category": "媒体新闻",
+                "date": "2024-07-10",
+                "link": "https://static.nfnews.com/content/202507/10/c11492586.html?from=timeline&date=&layer=3",
+                "cover": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250",
+                "pinned": true,
+                "featured": false
+            },
+            {
+                "id": 2,
+                "title": "人才智享荟｜AI 零基础培训活动报名：从入门到精通",
+                "summary": "人才智享荟推出 AI 零基础专项培训，课程涵盖 AI 基础原理与实战应用，专为入门人群设计阶梯式学习体系，帮助学员系统掌握 AI 技能，现已开启报名通道。",
+                "source": "人才智享荟",
+                "category": "培训与报道",
+                "date": "2024-01-15",
+                "link": "http://www.shurl.cc/4bad6b0daf9c38918f41d3abf9f16946",
+                "cover": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250",
+                "pinned": false,
+                "featured": false
+            },
+            {
+                "id": 3,
+                "title": "DeepSeek 智能应用专题培训成功举办 推动 AI 办公革新",
+                "summary": "聚焦 AI 技术在办公场景的创新应用，DeepSeek 智能应用专题培训顺利落下。培训通过案例解析与实操演练，帮助学员掌握智能工具提升办公效能，助力企业数字化转型。",
+                "source": "山麓教育咨询",
+                "category": "培训与报道",
+                "date": "2024-01-10",
+                "link": "http://www.shurl.cc/437d4ef1b6c02598fdcec5f5ed8ffdad",
+                "cover": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250",
+                "pinned": false,
+                "featured": true
+            },
+            {
+                "id": 4,
+                "title": "遵义医科大学珠海校区举办AI赋能教育科研与创新管理专题培训",
+                "summary": "遵义医科大学珠海校区面向教师群体开展 AI 专题培训，内容围绕教育科研智能化工具应用与创新管理模式，旨在提升教师运用 AI 技术优化教学与科研工作的能力。",
+                "source": "遵义医科大学珠海校区",
+                "category": "培训与报道",
+                "date": "2024-12-20",
+                "link": "https://www.zmuzh.edu.cn/info/1147/139792.htm",
+                "cover": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250",
+                "pinned": false,
+                "featured": false
+            },
+            {
+                "id": 5,
+                "title": "中山市数字工匠培育项目: DeepSeek 人工智能实战应用培训班正式开班",
+                "summary": "作为中山市万名数字工匠培育计划的重要组成部分，DeepSeek 人工智能实战应用培训班已启动授课，课程聚焦 AI 技术在产业场景的实际应用，培养具备实操能力的技能人才。",
+                "source": "搜狐",
+                "category": "培训与报道",
+                "date": "2024-12-15",
+                "link": "https://m.sohu.com/a/865223001_122118476/",
+                "cover": "https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250",
+                "pinned": false,
+                "featured": false
+            },
+            {
+                "id": 6,
+                "title": "我校教师发展系列讲座首讲：DeepSeek 人工智能实战应用培训顺利开展",
+                "summary": "本校教师发展系列讲座第一讲聚焦 DeepSeek 人工智能实战应用，通过理论讲解与现场实操相结合的方式，帮助教师群体掌握 AI 工具在教学与科研中的应用方法。",
+                "source": "党委宣传部",
+                "category": "培训与报道",
+                "date": "2024-12-10",
+                "link": "https://dept.zhcpt.edu.cn/dwxxb/info/1121/31042.htm",
+                "cover": "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250",
+                "pinned": false,
+                "featured": false
+            },
+            {
+                "id": 7,
+                "title": "珠海城市职业技术学院举办教师发展系列讲座：DeepSeek 人工智能实战应用培训",
+                "summary": "珠海城市职业技术学院面向教师开展 DeepSeek 人工智能实战应用培训，作为教师发展系列讲座的重要内容，课程旨在提升教师运用智能技术赋能教育的权利。",
+                "source": "珠海城市职业技术学院",
+                "category": "培训与报道",
+                "date": "2024-12-05",
+                "link": "https://www.zhcpt.edu.cn/info/1445/83538.htm",
+                "cover": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250",
+                "pinned": false,
+                "featured": false
+            },
+            {
+                "id": 8,
+                "title": "中山市万名数字工匠培育计划：DeepSeek 人工智能实战应用培训班火热进行中",
+                "summary": "中山市重点推进的万名数字工匠培育项目中，DeepSeek 人工智能实战应用培训班吸引众多学员参与。课程围绕产业实际需求设置实战内容，助力学员掌握 AI 技术提升职业竞争力。",
+                "source": "搜狐",
+                "category": "培训与报道",
+                "date": "2024-11-28",
+                "link": "https://m.sohu.com/a/865223183_122118476",
+                "cover": "https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250",
+                "pinned": false,
+                "featured": false
+            }
+        ];
+        
+        let currentCategory = 'all';
+        let currentSort = 'date-desc';
+        let displayedArticles = 12;
+        const articlesPerLoad = 6;
+
+        // 创建文章卡片
+        function createArticleCard(article, type = 'regular') {
+            const cardClass = type === 'pinned' ? 'pinned-card' : type === 'featured' ? 'featured-card' : '';
+            const badgeClass = type === 'pinned' ? 'bg-danger' : type === 'featured' ? 'bg-warning' : 'bg-primary';
+            const badgeText = type === 'pinned' ? '置顶推荐' : type === 'featured' ? '特色文章' : article.category;
+            
+            return `
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card article-card h-100 ${cardClass}">
+                        <div class="position-relative">
+                            <img src="${article.cover}" class="card-img-top" alt="${article.title}" style="height: 200px; object-fit: cover;">
+                            <div class="position-absolute top-0 end-0 m-2">
+                                <span class="badge ${badgeClass}">${badgeText}</span>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">${article.title}</h5>
+                            <p class="card-text text-muted small mb-2">
+                                <i class="fas fa-calendar-alt me-1"></i>${formatDate(article.date)}
+                                <span class="ms-3"><i class="fas fa-tag me-1"></i>${article.source}</span>
+                            </p>
+                            <p class="card-text flex-grow-1">${article.summary}</p>
+                            <div class="mt-auto">
+                                <a href="${article.link}" target="_blank" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-external-link-alt me-1"></i>阅读原文
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 格式化日期
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+
+        // 简化的加载函数 - 直接使用嵌入数据
+        function loadArticlesData() {
+            console.log('使用嵌入数据，共', articlesData.length, '篇文章');
+            initializePage();
+        }
+
+        // 初始化页面
+        function initializePage() {
+            console.log('初始化页面...');
+            updateStats();
+            renderArticles();
+            bindEvents();
+        }
+
+        // 更新统计数据
+        function updateStats() {
+            const totalArticles = articlesData.length;
+            const mediaReports = articlesData.filter(article => article.category === '媒体新闻').length;
+            const trainingReports = articlesData.filter(article => article.category === '培训与报道').length;
+            const aiNews = articlesData.filter(article => article.category === 'AI资讯').length;
+
+            document.getElementById('totalArticles').textContent = totalArticles;
+            document.getElementById('mediaReports').textContent = mediaReports;
+            document.getElementById('trainingReports').textContent = trainingReports;
+            document.getElementById('aiNews').textContent = aiNews;
+        }
+
+        // 渲染文章列表
+        function renderArticles() {
+            console.log('开始渲染文章，当前分类:', currentCategory);
+            
+            let filteredArticles = articlesData;
+
+            // 分类筛选
+            if (currentCategory !== 'all') {
+                filteredArticles = articlesData.filter(article => article.category === currentCategory);
+                console.log('筛选后文章数量:', filteredArticles.length);
+            }
+
+            // 排序
+            filteredArticles.sort((a, b) => {
+                if (currentSort === 'date-desc') {
+                    return new Date(b.date) - new Date(a.date);
+                } else if (currentSort === 'date-asc') {
+                    return new Date(a.date) - new Date(b.date);
+                }
+                return 0;
+            });
+
+            // 分离置顶、特色和普通文章
+            const pinnedArticles = filteredArticles.filter(article => article.pinned);
+            const featuredArticles = filteredArticles.filter(article => article.featured && !article.pinned);
+            const regularArticles = filteredArticles.filter(article => !article.pinned && !article.featured);
+
+            console.log('文章分类统计:', {
+                pinned: pinnedArticles.length,
+                featured: featuredArticles.length,
+                regular: regularArticles.length
+            });
+
+            // 渲染置顶推荐
+            const pinnedContainer = document.getElementById('pinnedArticles');
+            if (pinnedContainer) {
+                if (pinnedArticles.length > 0) {
+                    pinnedContainer.innerHTML = pinnedArticles.map(article => createArticleCard(article, 'pinned')).join('');
+                    const pinnedSection = document.querySelector('.pinned-section');
+                    if (pinnedSection) pinnedSection.style.display = 'block';
+                } else {
+                    pinnedContainer.innerHTML = '';
+                    const pinnedSection = document.querySelector('.pinned-section');
+                    if (pinnedSection) pinnedSection.style.display = 'none';
+                }
+            }
+
+            // 渲染特色文章
+            const featuredContainer = document.getElementById('featuredArticles');
+            if (featuredContainer) {
+                if (featuredArticles.length > 0) {
+                    featuredContainer.innerHTML = featuredArticles.slice(0, 3).map(article => createArticleCard(article, 'featured')).join('');
+                    const featuredSection = document.querySelector('.featured-section');
+                    if (featuredSection) featuredSection.style.display = 'block';
+                } else {
+                    featuredContainer.innerHTML = '';
+                    const featuredSection = document.querySelector('.featured-section');
+                    if (featuredSection) featuredSection.style.display = 'none';
+                }
+            }
+
+            // 渲染普通文章
+            const regularContainer = document.getElementById('regularArticles');
+            if (regularContainer) {
+                const articlesToShow = regularArticles.slice(0, displayedArticles);
+                regularContainer.innerHTML = articlesToShow.map(article => createArticleCard(article, 'regular')).join('');
+                console.log('渲染普通文章数量:', articlesToShow.length);
+            }
+
+            // 更新加载更多按钮
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            if (loadMoreBtn) {
+                if (regularArticles.length > displayedArticles) {
+                    loadMoreBtn.style.display = 'block';
+                    loadMoreBtn.textContent = `加载更多 (还有 ${regularArticles.length - displayedArticles} 篇)`;
+                } else {
+                    loadMoreBtn.style.display = 'none';
+                }
+            }
+
+            console.log(`✅ 渲染完成: 置顶 ${pinnedArticles.length} 篇, 特色 ${featuredArticles.length} 篇, 普通 ${Math.min(regularArticles.length, displayedArticles)} 篇`);
+        }
+
+        // 绑定事件
+        function bindEvents() {
+            // 分类切换
+            document.querySelectorAll('[data-category]').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    console.log('切换分类到:', this.dataset.category);
+                    
+                    // 更新活动状态
+                    document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // 更新当前分类
+                    currentCategory = this.dataset.category;
+                    displayedArticles = 12; // 重置显示数量
+                    renderArticles();
+                });
+            });
+
+            // 排序切换
+            document.getElementById('sortSelect').addEventListener('change', function() {
+                console.log('切换排序到:', this.value);
+                currentSort = this.value;
+                renderArticles();
+            });
+
+            // 加载更多
+            document.getElementById('loadMoreBtn').addEventListener('click', function() {
+                console.log('加载更多文章');
+                displayedArticles += articlesPerLoad;
+                renderArticles();
+            });
+
+            // 咨询按钮
+            document.querySelectorAll('.consultation-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const modal = new bootstrap.Modal(document.getElementById('consultationModal'));
+                    modal.show();
+                });
+            });
+        }
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('页面DOM加载完成，开始初始化...');
+            loadArticlesData();
+        });
+    </script>
+
+    <style>
+        .article-card {
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .pinned-card {
+            border-left: 4px solid #dc3545;
+        }
+
+        .featured-card {
+            border-left: 4px solid #ffc107;
+        }
+
+        .card-overlay {
+            background: rgba(0,0,0,0.7);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .article-card:hover .card-overlay {
+            opacity: 1;
+        }
+
+        .floating-icon {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .stats-row .stat-item {
+            text-align: center;
+        }
+
+        .content-nav .nav-pills .nav-link {
+            color: var(--dark-color);
+            border-radius: 30px;
+            padding: 8px 20px;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+            background-color: transparent;
+            border: 2px solid transparent;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content-nav .nav-pills .nav-link.active {
+            background-color: var(--primary-color) !important;
+            color: white !important;
+            border-color: var(--primary-color);
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0, 86, 179, 0.3);
+        }
+
+        .content-nav .nav-pills .nav-link:hover:not(.active) {
+            background-color: rgba(0, 86, 179, 0.1);
+            border-color: rgba(0, 86, 179, 0.3);
+            color: var(--primary-color);
+        }
+    </style>
+</body>
+</html>
